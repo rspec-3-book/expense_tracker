@@ -31,6 +31,8 @@ module ExpenseTracker
       end
 
       context 'when the expense fails validation' do
+        # ...
+
         let(:expense) { { 'some' => 'data' } }
 
         before do
@@ -50,6 +52,8 @@ module ExpenseTracker
           parsed = JSON.parse(last_response.body)
           expect(parsed).to include('error' => 'Expense incomplete')
         end
+
+        # ...
       end
     end
 
