@@ -17,7 +17,16 @@ ENV['RACK_ENV'] = 'test'
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+module ExpenseTrackerMatchers
+  def an_expense_identified_by(id)
+    a_hash_including(id: id).and including(:payee, :amount, :date)
+  end
+end
+
 RSpec.configure do |config|
+  config.include ExpenseTrackerMatchers
+  # ...rest of the config...
+
   config.when_first_matching_example_defined(:db) do
     require_relative 'support/db'
   end
