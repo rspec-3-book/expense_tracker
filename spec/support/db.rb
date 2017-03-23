@@ -4,4 +4,8 @@ RSpec.configure do |c|
     Sequel::Migrator.run(DB, 'db/migrations')
     DB[:expenses].truncate
   end
+
+  c.around(:example, :db) do |example|
+    DB.transaction(rollback: :always) { example.run }
+  end
 end
