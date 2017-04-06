@@ -26,7 +26,16 @@ module ExpenseTracker
           expect(parsed).to include('expense_id' => 417)
         end
 
-        it 'responds with a 200 (OK)'
+        it 'responds with a 200 (OK)' do
+          expense = { 'some' => 'data' }
+
+          allow(ledger).to receive(:record)
+            .with(expense)
+            .and_return(RecordResult.new(true, 417, nil))
+
+          post '/expenses', JSON.generate(expense)
+          expect(last_response.status).to eq(200)
+        end
       end
 
       context 'when the expense fails validation' do
