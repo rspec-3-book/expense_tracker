@@ -1,5 +1,4 @@
 require_relative '../../../app/ledger'
-require_relative '../../../config/sequel'
 
 module ExpenseTracker
   RSpec.describe Ledger, :aggregate_failures, :db do
