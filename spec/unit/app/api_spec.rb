@@ -35,6 +35,8 @@ module ExpenseTracker
       end
 
       context 'when the expense fails validation' do
+        # ...
+
         let(:expense) { { 'some' => 'data' } }
 
         before do
@@ -54,6 +56,8 @@ module ExpenseTracker
           post '/expenses', JSON.generate(expense)
           expect(last_response.status).to eq(422)
         end
+
+        # ...
       end
     end
 
