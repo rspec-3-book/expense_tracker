@@ -102,3 +102,13 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 end
+
+RSpec.configure do |rspec|
+  rspec.alias_example_group_to :pdescribe, pry: true
+  rspec.alias_example_to :pit, pry: true
+
+  rspec.after(:example, pry: true) do |ex|
+    require 'pry'
+    binding.pry
+  end
+end

@@ -9,3 +9,5 @@ gem 'rack-test', '0.7.0'
 gem 'sinatra',   '2.0.0'
 gem 'sequel',    '4.48.0'
 gem 'sqlite3',   '1.3.13'
+
+gem 'pry', '0.10.4'
