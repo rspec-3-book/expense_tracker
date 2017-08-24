@@ -49,8 +49,8 @@ module ExpenseTracker
         result_3 = ledger.record(expense.merge('date' => '2017-06-11'))
 
         expect(ledger.expenses_on('2017-06-10')).to contain_exactly(
-          a_hash_including(id: result_1.expense_id),
-          a_hash_including(id: result_2.expense_id)
+          an_expense_identified_by(result_1.expense_id),
+          an_expense_identified_by(result_2.expense_id)
         )
       end
 
